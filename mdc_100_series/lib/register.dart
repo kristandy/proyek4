@@ -29,7 +29,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Image.asset('assets/diamond.png'),
                 const SizedBox(height: 16.0),
                 Text(
-                  'SHRINE',
+                  'ARYAGARA',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ],
@@ -96,7 +96,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 ElevatedButton(
                   child: const Text('REGISTER'),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      // Ini akan mengganti halaman login dengan halaman beranda
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                       foregroundColor: kShrineBrown900,
