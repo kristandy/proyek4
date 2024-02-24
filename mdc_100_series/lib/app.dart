@@ -21,6 +21,7 @@ import 'category_menu_page.dart';
 import 'home.dart';
 import 'login.dart';
 import 'colors.dart';
+import 'theme.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
 class ShrineApp extends StatefulWidget {

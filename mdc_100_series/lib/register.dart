@@ -1,32 +1,21 @@
-// Copyright 2018-present the Flutter authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 import 'package:flutter/material.dart';
 import 'package:shrine/colors.dart';
-import 'register.dart';
+import 'login.dart'; // Import login.dart untuk dapat kembali ke halaman login
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegistrationPageState createState() => _RegistrationPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  // TODO: Add text editing controllers (101)
+class _RegistrationPageState extends State<RegistrationPage> {
+  // TODO: Add text editing controllers for registration details
+  final _emailController = TextEditingController();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +34,14 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 120.0),
+            const SizedBox(height: 80.0),
+            TextField(
+              controller: _emailController,
+              decoration: const InputDecoration(
+                labelText: 'Email',
+              ),
+            ),
+            const SizedBox(height: 12.0),
             TextField(
               controller: _usernameController,
               decoration: const InputDecoration(
@@ -60,26 +56,35 @@ class _LoginPageState extends State<LoginPage> {
               ),
               obscureText: true,
             ),
+            const SizedBox(height: 12.0),
+            TextField(
+              controller: _confirmPasswordController,
+              decoration: const InputDecoration(
+                labelText: 'Confirm Password',
+              ),
+              obscureText: true,
+            ),
+            // Button to navigate back to login page
             TextButton(
-              child: const Text('Haven\'t registered? Register'),
+              child: const Text('Already registered? Login'),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RegistrationPage()),
+                  MaterialPageRoute(builder: (context) => LoginPage()),
                 );
               },
               style: TextButton.styleFrom(foregroundColor: kShrineBrown900),
             ),
-            // TODO: Remove filled: true values (103)
-            // TODO: Add TextField widgets (101)
             OverflowBar(
               alignment: MainAxisAlignment.end,
               children: <Widget>[
                 TextButton(
                   child: const Text('CANCEL'),
                   onPressed: () {
+                    _emailController.clear();
                     _usernameController.clear();
                     _passwordController.clear();
+                    _confirmPasswordController.clear();
                   },
                   style: TextButton.styleFrom(
                     foregroundColor: kShrineBrown900,
@@ -89,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 ElevatedButton(
-                  child: const Text('LOGIN'),
+                  child: const Text('REGISTER'),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -103,8 +108,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-
-            // TODO: Add button bar (101)
           ],
         ),
       ),

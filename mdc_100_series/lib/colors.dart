@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'theme.dart';
 
 const kShrinePink50 = Color(0xFFFEEAE6);
 const kShrinePink100 = Color(0xFFFEDBD0);
@@ -11,3 +12,6 @@ const kShrineErrorRed = Color(0xFFC5032B);
 
 const kShrineSurfaceWhite = Color(0xFFFFFBFA);
 const kShrineBackgroundWhite = Colors.white;
+
+const kGreen = Color(0xFF4C662B);
+const kGreenPrim = Color(0xFFCDEDA3);
